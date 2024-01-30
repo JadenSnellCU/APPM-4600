@@ -1,2 +1,5 @@
-# testrep
-This repository contains all of the homework assignments and labs perfromed in the class APPM 4600: Numerical Analysis and Scientific Computing. 
+# Applied Math 4600: Numerical Analysis
+This repository contains all of the homework assignments and labs perfromed in the class APPM 4600: Numerical Analysis. 
+
+## Subdirectory Structure
+The subdirectory structure includes a main APPM 4600 folder that splits into two subfolders; Homeworks and Labs respectively
