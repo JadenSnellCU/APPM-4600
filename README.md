@@ -5,3 +5,4 @@ This repository contains all of the homework assignments and labs perfromed in t
 The subdirectory structure includes a main APPM 4600 folder that splits into two subfolders; Homeworks and Labs respectively.
 
 ## Miscellaneous Information
+The content will include problems relating to 
