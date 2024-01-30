@@ -7,4 +7,4 @@ The subdirectory structure includes a main APPM 4600 folder that splits into two
 ## Miscellaneous Information
 The content will include numerical analysis problems relating to root finding, interpolation, approximation, quadrature, linear algebra, and scientific computing.
 
-Authored by: Jaden Snell
+**Authored by: Jaden Snell**
