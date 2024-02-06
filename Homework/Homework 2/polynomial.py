@@ -8,7 +8,7 @@ y = math.exp(x)
 result_1 = y - 1 
 
 #Approx
-y_approx = 1 - x
+y_approx = 1 +  x
 result_2 = y_approx - 1
 
 print(f"Original result: {result_1:.16f}")
