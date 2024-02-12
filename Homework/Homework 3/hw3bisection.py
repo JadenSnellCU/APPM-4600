@@ -112,7 +112,7 @@ print('\n')
 f = lambda x: x**3 + x -4
 a = 1
 b = 4
-tol = 10e-3
+tol = 1e-3
 [astar,ier, count] = bisection(f,a,b,tol,Nmax)
 print("For Problem 3b")
 print('the approximate root is',astar)
