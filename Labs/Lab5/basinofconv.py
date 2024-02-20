@@ -169,6 +169,7 @@ def hybrid(f,f_prime, f_dprime,a,b,tol,Nmax):
             ier = 0
             return [astar,ier,count]
         x0 = x1
+        count += 1
     astar = x1
     ier = 1
     
@@ -197,7 +198,7 @@ print(f'the # of iterations [{a},{b}] is',count)
 print("\n")
 
 print("Hybrid Method")
-[hybrid_astar,hybrid_ier] = hybrid(f,fp,fdp,a,b,tol,Nmax)
+[hybrid_astar,hybrid_ier,count] = hybrid(f,fp,fdp,a,b,tol,Nmax)
 print(f'the approximate root is for the interval [{a},{b}] is',hybrid_astar)
 print(f'the error message reads  for the interval [{a},{b}] is',hybrid_ier)
 print(f'the # of iterations [{a},{b}] is',count)
