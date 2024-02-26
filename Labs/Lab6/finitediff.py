@@ -40,6 +40,7 @@ print(f"The derivative at point x = {x0} approximated through forward difference
 print(f"The order of convergence of forward difference is ",  round(a,2))
 print('\n')
 
+#Centered Difference
 df = cent_diff(f,h,x0)
 a, err_lambda = estimate_order(df)
 print(f"The derivative at point x = {x0} approximated through centered difference is " , df[-1])
