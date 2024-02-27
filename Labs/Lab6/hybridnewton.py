@@ -5,23 +5,25 @@ from numpy.linalg import inv
 from numpy.linalg import norm
 import matplotlib.pyplot as plt;
 
-def cent_diff(f,h,x):
-    df = (f(x[0]+h,x[1])-f(x[0]-h, x[1]))/(2*h)
+def cent_diff(f, h, x, j):
+    # Modify to use index j for adaptive hj
+    perturb = np.zeros_like(x)
+    perturb[j] = h 
+    df = (f(x + perturb) - f(x - perturb)) / (2 * h)
     return df
 
-
-
 def evalF(x):
-
     F = np.zeros(2)
-
-    F[0] = 4*x[0]**2+x[1]**2 - 4
-    F[1] = x[0]+x[1] - np.sin(x[0] - x[1])
+    F[0] = 4*x[0]**2 + x[1]**2 - 4
+    F[1] = x[0] + x[1] - np.sin(x[0] - x[1])
     return F
 
-def evalJ(x,f):
-    J = np.array([[cent_diff(f[0],h*x[0],x), cent_diff(f[0],h*x[1],x)],[cent_diff(f[1],h*x[0],x),cent_diff(f[1],h*x[0],x)]])
+def evalJ(x, h_factors):
+    h = [h_factors[i] * abs(x[i]) for i in range(len(x))]
+    J = np.array([[cent_diff(lambda x: evalF(x)[0], h[0], x, 0), cent_diff(lambda x: evalF(x)[0], h[1], x, 1)],
+                  [cent_diff(lambda x: evalF(x)[1], h[0], x, 0), cent_diff(lambda x: evalF(x)[1], h[1], x, 1)]])
     return J
+
 
 def LazyNewton(x0,tol,Nmax):
 
@@ -31,11 +33,12 @@ def LazyNewton(x0,tol,Nmax):
 
     xlist = np.zeros((Nmax+1,len(x0)))
     xlist[0] = x0
-    J = evalJ(x0,evalF(x0))
+    h_factors = [1e-3, 1e-3]
+    J = evalJ(x0,h_factors)
     
     for its in range(Nmax):
        if its % 2 == 0:
-           J = evalJ(x0,F) 
+           J = evalJ(x0,h_factors) 
        F = evalF(x0)
        x1 = x0 - np.linalg.solve(J,F)
        xlist[its+1]=x1
@@ -54,7 +57,7 @@ def LazyNewton(x0,tol,Nmax):
 
 
 h = 1e-3
-x0 = [1,0]
+x0 = [1.1,0.2]
 tol = 1e-10
 Nmax = 100
 xstar,xlist, ier, its = LazyNewton(x0,tol,Nmax)
