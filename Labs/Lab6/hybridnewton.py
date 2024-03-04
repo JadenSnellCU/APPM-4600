@@ -33,11 +33,12 @@ def LazyNewton(x0,tol,Nmax):
 
     xlist = np.zeros((Nmax+1,len(x0)))
     xlist[0] = x0
-    h_factors = [1e-3, 1e-3]
+    h_factors = np.array([1e-3, 1e-3])
     J = evalJ(x0,h_factors)
     
     for its in range(Nmax):
-       if its % 2 == 0:
+       if its % 3 == 0:
+           h_factors /=2
            J = evalJ(x0,h_factors) 
        F = evalF(x0)
        x1 = x0 - np.linalg.solve(J,F)
@@ -56,7 +57,6 @@ def LazyNewton(x0,tol,Nmax):
     return[xstar,xlist,ier,its]
 
 
-h = 1e-3
 x0 = [1.1,0.2]
 tol = 1e-10
 Nmax = 100
