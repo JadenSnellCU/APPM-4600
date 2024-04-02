@@ -26,6 +26,7 @@ legendre_new = eval_legendre(n,x)
 for i in range(5):
     #Scipy Legendre
     legendre_scipy = legendre(i)(x)
+    print(f"\ni = {i}\n")
     print("Legendre Polynomial values (My Function):", legendre_new[i])
     print("Legendre Polynomial values (Scipy Function):", legendre_scipy)
     print("\n")
