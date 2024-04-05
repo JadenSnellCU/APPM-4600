@@ -78,7 +78,6 @@ for n in n_values:
 
 
 def psi_n(x, nodes):
-    """Compute psi_n(x) given a set of nodes."""
     psi = np.ones_like(x)
     for xi in nodes:
         psi *= (x - xi)
@@ -104,6 +103,6 @@ plt.plot(x_range, np.log10(np.abs(psi_equispaced)), label='Equispaced Nodes')
 plt.plot(x_range, np.log10(np.abs(psi_chebyshev)), label='Chebyshev Nodes')
 plt.title('Error for Equispaced and Chebyshev Nodes')
 plt.xlabel('x')
-plt.ylabel('log10(|psi_n(x)|)')
+plt.ylabel('log10(|psi_20(x)|)')
 plt.legend()
 plt.show()
