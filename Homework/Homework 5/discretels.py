@@ -26,14 +26,13 @@ weights = np.array([1, 4, 9, 6])
 D = np.diag(np.sqrt(weights))
 
 # Calculating the weighted normal equation components
-DM = np.dot(D, G)
-Dy = np.dot(D, y)
-
-DMtDM = np.dot(DM.T, DM)
-DMtDy = np.dot(DM.T, Dy)
+MtD = G.T @ D
+MtDM = MtD @ G
+MtDy = MtD @ y
 
 
-a_weighted = np.linalg.solve(DMtDM, DMtDy)
+
+a_weighted = np.linalg.solve(MtDM, MtDy)
 print(a_weighted) 
 
 
