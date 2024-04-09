@@ -16,14 +16,14 @@ def composite_simpsons_rule(a, b, f, N):
     return (delta_x / 3) * (f(a) + 2*sum_even + 4*sum_odd + f(b))
 
 def test_function(x):
-    return np.sin(x)
+    return np.sin(1/x)
 
-a = 0
-b = np.pi
-N = 100
+a = 0.1
+b = 2
+N = 500
 
 trapezoidal_result = composite_trapezoidal_rule(a, b, test_function, N)
-print("Composite Trapezoidal Rule Result:", round(trapezoidal_result,3))
+print("Composite Trapezoidal Rule Result:", round(trapezoidal_result,5))
 
 simpsons_result = composite_simpsons_rule(a, b, test_function, N)
-print("Composite Simpson's Rule Result:", round(simpsons_result,3))
+print("Composite Simpson's Rule Result:", round(simpsons_result,5))
